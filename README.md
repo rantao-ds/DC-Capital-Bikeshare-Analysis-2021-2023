@@ -20,7 +20,7 @@ I was also impressed by how the transportation system connects Virginia through 
 ### Key Findings
 * **Commuter Corridors vs. Sightseeing Loops:** Members (60.5% of rides) use bikeshare for daily transportation, primarily taking short point-to-point trips (averaging under 10 minutes) that connect residential neighborhoods to employment hubs like K Street and Navy Yard. In contrast, casual riders use the service for leisure, riding longer durations in loop patterns around the National Mall.
   
-* **Non-Linear Weather Response:** Quadratic regression modeling (R² = 0.651) proves that weather relationships are curved rather than strictly linear. Daily ridership increases with temperature until reaching an optimal peak at 25.7°C (78°F), after which extreme summer heat and rainfall suppress riding demand.
+* **Non-Linear Weather Response:** Quadratic regression modeling (R² = 0.651) demonstrates that weather relationships are non-linear rather than strictly linear. Daily ridership increases with temperature until reaching an optimal peak at 25.7°C (78°F), after which extreme summer heat and rainfall suppress riding demand.
 
 * **Post-Pandemic Demand Recovery:** Total annual ridership grew by 57.2% between 2021 and 2023. Weekday casual ridership growth doubled member growth, reflecting a strong recovery in business travel and regional tourism alongside the return-to-office trend.
 
@@ -264,7 +264,7 @@ Overall, trips at the top three pick-up stations on weekdays have steadily incre
 
 ### Objective
 
-For modeling, this section examines whether daily bikeshare ridership is associated with weather conditions and weekend status, whether weather relationships are linear or curved, and whether these effects differ between weekdays and weekends. Multiple linear regression was used as the baseline model, quadratic terms were added to examine curved patterns, and interaction terms tested whether the effects of temperature and precipitation varied by weekend status. The trip-level data were aggregated into 1,095 daily observations (365 days × 3 years) from the 9,451,314 trips used in the EDA.
+For modeling, this section examines whether daily bikeshare ridership is associated with weather conditions and weekend status, whether weather relationships are linear or non-linear, and whether these effects differ between weekdays and weekends. Multiple linear regression was used as the baseline model, quadratic terms were added to capture non-linear patterns, and interaction terms tested whether the effects of temperature and precipitation varied by weekend status. The trip-level data were aggregated into 1,095 daily observations (365 days × 3 years) from the 9,451,314 trips used in the EDA.
 
 ### Variables 
 
@@ -292,7 +292,7 @@ Ridge, Lasso, and Elastic Net regularization were applied to evaluate coefficien
 
 **4. Quadratic and Interaction Effects**
 
-The final step extended the baseline linear model by examining curved relationships and interaction effects. Weather variables such as temperature may not have a strictly linear relationship with ridership. For example, ridership may increase as temperatures become warmer but decline once temperatures become excessively high.
+The final step extended the baseline linear model by examining non-linear relationships and interaction effects. Weather variables such as temperature may not have a strictly linear relationship with ridership. For example, ridership may increase as temperatures become warmer but decline once temperatures become excessively high.
 
 Quadratic terms were added for the weather variables to capture potential curvature and identify possible maximum or minimum points in their relationships with ridership. Any estimated turning point was interpreted only when it fell within the observed range of the data.
 
@@ -380,7 +380,7 @@ The Weekend × Precipitation interaction is not statistically significant, indic
 
 Overall, the modeling analysis indicates that weather conditions, particularly temperature and weekend status, are important predictors of daily Capital Bikeshare ridership. The baseline linear model shows positive associations between temperature, weekend status, and ridership, while the interaction model suggests that temperature has a stronger positive association with ridership on weekends than on weekdays.
 
-The quadratic model reveals curved relationships between several weather variables and ridership. Predicted ridership peaks at approximately 25.7°C and declines beyond this point. For precipitation, predicted ridership reaches a minimum at approximately 37.7 mm. While the curve bends slightly back up after this point, that is mainly due to the small number of extreme rain days rather than actual ridership growth during storms.
+The quadratic model reveals non-linear relationships between several weather variables and ridership. Predicted ridership peaks at approximately 25.7°C and declines beyond this point. For precipitation, predicted ridership reaches a minimum at approximately 37.7 mm. While the curve bends slightly back up after this point, that is mainly due to the small number of extreme rain days rather than actual ridership growth during storms.
 
 The quadratic model explains more variation than the baseline linear model (R² = 0.651 versus 0.581), suggesting that some weather–ridership relationships are not strictly linear. VIF diagnostics show no multicollinearity concerns, while the similar test MSE values across the baseline and regularized models provide evidence that the baseline model is relatively stable and that regularization offers little improvement in predictive performance.
 
