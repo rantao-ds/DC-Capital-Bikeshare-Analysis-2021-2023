@@ -1,4 +1,4 @@
-# Capital Bikeshare Ridership Analysis(2021-2023)
+# DC Capital Bikeshare Ridership Analysis(2021-2023)
 An exploratory, spatial, and statistical analysis of Capital Bikeshare ridership patterns in Washington, D.C., using R and ArcGIS.
 
 ### Why This Project 
